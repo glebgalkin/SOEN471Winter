@@ -7,7 +7,7 @@ Dmytro Semenov ID#40038839
 
 
 
-<b>US Accidents - Analysis and Predictions.<b>
+US Accidents - Analysis and Predictions.
                                                        
 
 
