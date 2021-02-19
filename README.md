@@ -1,8 +1,16 @@
 # SOEN471Winter
+Project.
+By 
+Gleb Galkin    ID#40026736
+Dmytro Semenov ID#40038839
 
-US Accidents - Analysis and Predictions.
 
-By Gleb Galkin and Dmytro Semenov
+
+
+                                                       US Accidents - Analysis and Predictions.
+                                                       
+
+
 Abstract:
 
 Despite the technological growth and its significant impact on safety the amount of car accidents is still a huge problem. 
