@@ -2,6 +2,7 @@ from pyspark.sql import DataFrame
 from pyspark.sql.functions import date_format
 
 from prediction_magic.classification_analysis import ClassifierAnalyst
+from prediction_magic.dataset_trims import no_weather
 from prediction_magic.regressions import build_GeneralizedLinearRegressionModel
 from util.data_analysis import display_ratios
 from util.helpers import display_piechart_of_column, read_dataset
@@ -27,10 +28,9 @@ def add_time_formatted_columns(dataframe: DataFrame) -> DataFrame:
 
 
 total_accidents_data = read_dataset('data/US_Accidents_Dec20.csv')
-total_accidents_data.show()
+no_weather(total_accidents_data).show()
 # display_ratios(total_accidents_data)
 total_accidents_data = add_time_formatted_columns(total_accidents_data).show()
-# metrics = train_test_evaluate
 
 analyst = ClassifierAnalyst(total_accidents_data, 'traffic_duration', seed)
 metrics = analyst.train_test_evaluate_regression(

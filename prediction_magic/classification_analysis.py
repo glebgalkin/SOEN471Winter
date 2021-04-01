@@ -2,8 +2,6 @@ from pyspark.ml.evaluation import RegressionEvaluator
 from pyspark.sql import DataFrame
 from collections import namedtuple
 
-from prediction_magic.Metrics import Metrics
-
 
 class ClassifierAnalyst:
     def __init__(self, dataframe, label_to_predict, seed):
