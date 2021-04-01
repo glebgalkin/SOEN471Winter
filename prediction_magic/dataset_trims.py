@@ -47,6 +47,5 @@ def add_traffic_duration(dataframe: DataFrame) -> DataFrame:
 def add_start_month_day_hour_minutes(dataframe):
     dataframe = dataframe.withColumn('month', sql_func.date_format(dataframe.Start_Time, 'M'))
     dataframe = dataframe.withColumn('day', sql_func.date_format(dataframe.Start_Time, 'd'))
-    dataframe = dataframe.withColumn('hour', sql_func.date_format(dataframe.Start_Time, 'H'))
-    dataframe = dataframe.withColumn('minute', sql_func.date_format(dataframe.Start_Time, 'm'))
+    dataframe = dataframe.withColumn('hour_minutes', sql_func.date_format(dataframe.Start_Time, 'H')*60 + sql_func.date_format(dataframe.Start_Time, 'm'))
     return dataframe
