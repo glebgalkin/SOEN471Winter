@@ -21,16 +21,6 @@ road_specialties = ['Amenity', 'Bump', 'Crossing', 'Give_Way', 'Junction', 'No_E
 daylight_colums = ['Sunrise_Sunset', 'Civil_Twilight', 'Nautical_Twilight', 'Astronomical_Twilight']
 
 date_format_template = 'M-d-H-m'
-def no_id_source_description(dataframe: DataFrame) -> DataFrame:
-    return dataframe.drop(*useless_columns)
-
-
-def no_weather(dataframe: DataFrame) -> DataFrame:
-    return dataframe.drop(*weather_columns)
-
-
-def no_address(dataframe: DataFrame) -> DataFrame:
-    return dataframe.drop(*address_columns)
 
 
 def add_time_formatted_columns(dataframe: DataFrame) -> DataFrame:
@@ -41,7 +31,7 @@ def add_time_formatted_columns(dataframe: DataFrame) -> DataFrame:
 
 def add_traffic_duration(dataframe: DataFrame) -> DataFrame:
     dataframe = add_time_formatted_columns(dataframe)
-    dataframe = dataframe.withColumn('duration', (sql_func.unix_timestamp('end_mm_dd_hh', format=date_format_template) - sql_func.unix_timestamp('start_mm_dd_hh', format=date_format_template))/60)
+    dataframe = dataframe.withColumn('traffic_duration', (sql_func.unix_timestamp('end_mm_dd_hh', format=date_format_template) - sql_func.unix_timestamp('start_mm_dd_hh', format=date_format_template))/60)
     return dataframe
 
 def add_start_month_day_hour_minutes(dataframe):

@@ -11,7 +11,7 @@ class ClassifierAnalyst:
         self.__label_to_predict = label_to_predict
 
     def train_test_evaluate_regression(self, model_trainer):
-        model = model_trainer(self.__training_set)
+        model = model_trainer(self.__training_set, self.__label_to_predict)
         predictions = model.transform(self.__test_set)
         predictions.show()
         return self.__produce_regression_metrics(predictions)
