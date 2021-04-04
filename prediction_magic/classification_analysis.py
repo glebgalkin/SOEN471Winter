@@ -1,3 +1,4 @@
+from pyspark.ml.base import Estimator
 from pyspark.ml.evaluation import RegressionEvaluator
 from pyspark.sql import DataFrame
 from collections import namedtuple
@@ -10,9 +11,9 @@ class ClassifierAnalyst:
         self.__test_set = test
         self.__label_to_predict = label_to_predict
 
-    def train_test_evaluate_regression(self, model_trainer):
-        model = model_trainer(self.__training_set, self.__label_to_predict)
-        predictions = model.transform(self.__test_set)
+    def train_test_evaluate_regression(self, estimator: Estimator):
+        transformer = estimator.fit(self.__training_set)
+        predictions = transformer.transform(self.__test_set)
         predictions.show()
         return self.__produce_regression_metrics(predictions)
 

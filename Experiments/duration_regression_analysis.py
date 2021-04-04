@@ -1,3 +1,4 @@
+from pyspark.ml.regression import GeneralizedLinearRegression
 from pyspark.sql import DataFrame
 
 from prediction_magic import dataset_trims
@@ -18,8 +19,6 @@ def test_date_time_only(total_accidents_data: DataFrame, seed: int):
     total_accidents_data.show()
 
     analyst = ClassifierAnalyst(total_accidents_data, 'traffic_duration', seed)
-    metrics = analyst.train_test_evaluate_regression(
-        lambda training_set, prediction_col: build_GeneralizedLinearRegressionModel(training_set, prediction_col)
-    )
+    metrics = analyst.train_test_evaluate_regression(GeneralizedLinearRegression(family="gaussian", link='identity', maxIter=10))
     print('done working')
     print(metrics)
