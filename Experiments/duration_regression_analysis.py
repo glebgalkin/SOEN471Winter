@@ -16,7 +16,7 @@ def test_date_time_only(total_accidents_data: DataFrame, seed: int):
     total_accidents_data = total_accidents_data.drop(*dataset_trims.timezone_airport)
     total_accidents_data = total_accidents_data.drop(*['End_Lat', 'End_Lng', 'Distance(mi)'])
 
-    total_accidents_data.show()
+    total_accidents_data.printSchema()
 
     analyst = ClassifierAnalyst(total_accidents_data, 'traffic_duration', seed)
     metrics = analyst.train_test_evaluate_regression(GeneralizedLinearRegression(family="gaussian", link='identity', maxIter=10))
