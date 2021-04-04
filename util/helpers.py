@@ -10,6 +10,8 @@ import numpy as np
 from pyspark.sql.functions import col
 from pyspark.sql.types import StructType, StructField, StringType, TimestampType, IntegerType, FloatType, BooleanType
 
+from prediction_magic.dataset_trims import original_columns, daylight_colums, road_poi
+
 
 def init_spark():
     spark = SparkSession \
@@ -74,9 +76,7 @@ def read_dataset(filename):
                          StructField('Astronomical_Twilight', StringType(), True)])
     total_accidents_data = spark.read.schema(schema).csv(filename, header=True, mode="DROPMALFORMED", encoding="ISO-8859-1")
 
-    total_accidents_data.show()
-    total_accidents_data.printSchema()
-    return total_accidents_data
+    return total_accidents_data.drop('Country').drop('Turning_Loop').drop('id', 'Source', 'TMC', 'Description')
 
 
 def display_piechart_of_column(accidents_dataframe: DataFrame, column_name: str):

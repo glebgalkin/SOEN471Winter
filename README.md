@@ -71,3 +71,4 @@ At this moment of time we believe that the most relevant data to determine locat
 Since the dataset is quite big, we will use Apache Spark to work with the dataset, to clean it up, filter, modify and compute data. We will utilize the in memory computation that Spark provides for faster processing compared to MapReduce model. We will test our assumptions and models on a smaller amount of data at first, for example 5% or 10% of the original dataset that totals at 1.5 GB. We will try to use the cluster computers provided by Concordia University to deliver our final models and results, which will be delivered on the original dataset.
 
 
+Data analysis and feature engineering.

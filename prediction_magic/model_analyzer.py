@@ -4,7 +4,7 @@ from pyspark.sql import DataFrame
 from collections import namedtuple
 
 
-class ClassifierAnalyst:
+class ModelAnalyzer:
     def __init__(self, dataframe, label_to_predict, seed):
         (training, test) = dataframe.randomSplit([0.8, 0.2], seed)
         self.__training_set = training

@@ -17,7 +17,7 @@ geo_location_columns = ['Start_Lat', 'Start_Lng', 'End_Lat', 'End_Lng', 'Distanc
 address_columns = ['Number', 'Street', 'Side', 'City', 'County', 'State', 'Zipcode', 'Country']
 timezone_airport = ['Timezone', 'Airport_Code']
 weather_columns = ['Weather_Timestamp', 'Temperature(F)', 'Wind_Chill(F)', 'Humidity(%)', 'Pressure(in)', 'Visibility(mi)', 'Wind_Direction', 'Wind_Speed(mph)', 'Precipitation(in)', 'Weather_Condition']
-road_specialties = ['Amenity', 'Bump', 'Crossing', 'Give_Way', 'Junction', 'No_Exit', 'Railway', 'Roundabout', 'Station', 'Stop', 'Traffic_Calming', 'Traffic_Signal', 'Turning_Loop']
+road_poi = ['Amenity', 'Bump', 'Crossing', 'Give_Way', 'Junction', 'No_Exit', 'Railway', 'Roundabout', 'Station', 'Stop', 'Traffic_Calming', 'Traffic_Signal', 'Turning_Loop']
 daylight_colums = ['Sunrise_Sunset', 'Civil_Twilight', 'Nautical_Twilight', 'Astronomical_Twilight']
 
 date_format_template = 'M-d-H-m'
