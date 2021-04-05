@@ -16,7 +16,7 @@ def test_date_time_only(total_accidents_data: DataFrame, seed: int):
 
     print('description pre processing')
     total_accidents_data.describe().show()
-    analyst = ModelAnalyzer(total_accidents_data, 'traffic_duration', seed, ['Weather_Condition'],
+    analyst = ModelAnalyzer(total_accidents_data, 'Severity', seed, ['Weather_Condition'],
                             ['hour_minutes', 'month', 'day'])
     metrics = analyst.train_test_evaluate_regression(LinearRegression(maxIter=10))
     print(metrics)
