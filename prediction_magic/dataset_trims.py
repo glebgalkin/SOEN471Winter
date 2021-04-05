@@ -33,7 +33,7 @@ def add_time_formatted_columns(dataframe: DataFrame) -> DataFrame:
 
 def add_traffic_duration(dataframe: DataFrame) -> DataFrame:
     dataframe = add_time_formatted_columns(dataframe)
-    dataframe = dataframe.withColumn('traffic_duration', (sql_func.unix_timestamp('end_mm_dd_hh', format=date_format_template) - sql_func.unix_timestamp('start_mm_dd_hh', format=date_format_template))/60)
+    dataframe = dataframe.withColumn('traffic_duration', (sql_func.unix_timestamp('End_Time', format=date_format_template) - sql_func.unix_timestamp('Start_Time', format=date_format_template))/60)
     return dataframe
 
 

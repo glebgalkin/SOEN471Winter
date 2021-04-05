@@ -1,7 +1,8 @@
 from pyspark.ml.base import Estimator
-from pyspark.ml.evaluation import RegressionEvaluator
+from pyspark.ml.evaluation import RegressionEvaluator, MulticlassClassificationEvaluator
 from pyspark.ml.feature import StringIndexer, OneHotEncoder, VectorAssembler, FeatureHasher
 from pyspark.ml.pipeline import Pipeline
+from pyspark.mllib.evaluation import MulticlassMetrics
 from pyspark.mllib.linalg import DenseVector
 from pyspark.sql import DataFrame
 from collections import namedtuple
@@ -57,6 +58,8 @@ class ModelAnalyzer:
         return self.__produce_regression_metrics(predictions)
 
     def __produce_regression_metrics(self, predictions: DataFrame):
-        evaluator = RegressionEvaluator(metricName="rmse", labelCol='label', predictionCol="prediction")
-        rmse = evaluator.evaluate(predictions, {evaluator.metricName: "rmse"})
-        return rmse
+        # evaluator = RegressionEvaluator(metricName="rmse", labelCol='label', predictionCol="prediction")
+        # rmse = evaluator.evaluate(predictions, {evaluator.metricName: "rmse"})
+        # return rmse
+        evaluator = MulticlassMetrics(metricName='accuracy', labelCol='label', predictionCol='prediction')
+        return evaluator.evaluate(predictions)

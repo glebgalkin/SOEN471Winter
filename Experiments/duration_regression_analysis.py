@@ -1,3 +1,4 @@
+from pyspark.ml.classification import LogisticRegression
 from pyspark.ml.regression import GeneralizedLinearRegression, LinearRegression, DecisionTreeRegressor, \
     RandomForestRegressor
 from pyspark.sql import DataFrame
@@ -18,7 +19,7 @@ def test_date_time_only(total_accidents_data: DataFrame, seed: int):
     total_accidents_data.describe().show()
     analyst = ModelAnalyzer(total_accidents_data, 'Severity', seed, ['Weather_Condition'],
                             ['hour_minutes', 'month', 'day'])
-    metrics = analyst.train_test_evaluate_regression(LinearRegression(maxIter=10))
+    metrics = analyst.train_test_evaluate_regression(LogisticRegression(maxIter=10))
     print(metrics)
     # metrics = analyst.train_test_evaluate_regression(LinearRegression(maxIter=2))
     # print(metrics)
