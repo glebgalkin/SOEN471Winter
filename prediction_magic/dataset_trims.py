@@ -36,6 +36,7 @@ def add_traffic_duration(dataframe: DataFrame) -> DataFrame:
     dataframe = dataframe.withColumn('traffic_duration', (sql_func.unix_timestamp('end_mm_dd_hh', format=date_format_template) - sql_func.unix_timestamp('start_mm_dd_hh', format=date_format_template))/60)
     return dataframe
 
+
 def add_start_month_day_hour_minutes(dataframe):
     dataframe = dataframe.withColumn('month', sql_func.date_format(dataframe.Start_Time, 'M'))\
         .withColumn('month', col('month').cast(IntegerType()))

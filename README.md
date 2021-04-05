@@ -72,3 +72,9 @@ Since the dataset is quite big, we will use Apache Spark to work with the datase
 
 
 Data analysis and feature engineering.
+1) we converted start_time end_time into start month_day and hour_minutes. 
+E.g. 2020-12-31 12:19:16 becomes -> m: 12, d: 31, hour_minutes: 739 (12*60 + 19)
+# on a side note we will probably benefit if we truncate the minutes a little, 
+# maybe it would be easier to extract features if minutes are only rounded up or down to 0 or 30 minutes. 
+# e.g 12:19:16 becomes 12:30, 12:46:55 becomes 13:00
+
