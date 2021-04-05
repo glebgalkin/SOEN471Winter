@@ -19,6 +19,7 @@ def init_spark():
         .master('local[*]')\
         .appName("Python Spark SQL basic example") \
         .config("spark.some.config.option", "some-value") \
+        .config("spark.driver.memory", "15g")\
         .getOrCreate()
     return spark
 
@@ -74,8 +75,8 @@ def read_dataset(filename):
                          StructField('Civil_Twilight', StringType(), True),
                          StructField('Nautical_Twilight', StringType(), True),
                          StructField('Astronomical_Twilight', StringType(), True)])
-    total_accidents_data = spark.read.schema(schema).csv(filename, header=True, mode="DROPMALFORMED", encoding="ISO-8859-1")
-
+    total_accidents_data = spark.read.schema(schema).csv(filename, header=True, mode="DROPMALFORMED", encoding="ISO-8859-1", inferSchema=True)
+    # dropped meaningless and 1 class only columns
     return total_accidents_data.drop('Country').drop('Turning_Loop').drop('id', 'Source', 'TMC', 'Description')
 
 
