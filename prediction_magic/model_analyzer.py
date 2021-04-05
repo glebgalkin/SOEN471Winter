@@ -56,7 +56,7 @@ class ModelAnalyzer:
         return self.__produce_regression_metrics(predictions)
 
     def __produce_regression_metrics(self, predictions: DataFrame):
-        evaluator = RegressionEvaluator(metricName="rmse", labelCol=self.__label_to_predict, predictionCol="prediction")
+        evaluator = RegressionEvaluator(metricName="rmse", labelCol='label', predictionCol="prediction")
 
         rmse = evaluator.evaluate(predictions, {evaluator.metricName: "rmse"})
         r2 = evaluator.evaluate(predictions, {evaluator.metricName: "r2"})
