@@ -1,5 +1,7 @@
 from pyspark.sql import DataFrame
 from pyspark.sql import functions as sql_func
+from pyspark.sql.functions import col
+from pyspark.sql.types import IntegerType
 
 original_columns = ['ID', 'Source', 'TMC', 'Severity', 'Description'
                     'Start_Time', 'End_Time',
@@ -35,7 +37,9 @@ def add_traffic_duration(dataframe: DataFrame) -> DataFrame:
     return dataframe
 
 def add_start_month_day_hour_minutes(dataframe):
-    dataframe = dataframe.withColumn('month', sql_func.date_format(dataframe.Start_Time, 'M'))
-    dataframe = dataframe.withColumn('day', sql_func.date_format(dataframe.Start_Time, 'd'))
+    dataframe = dataframe.withColumn('month', sql_func.date_format(dataframe.Start_Time, 'M'))\
+        .withColumn('month', col('month').cast(IntegerType()))
+    dataframe = dataframe.withColumn('day', sql_func.date_format(dataframe.Start_Time, 'd'))\
+        .withColumn('day', col('day').cast(IntegerType()))
     dataframe = dataframe.withColumn('hour_minutes', sql_func.date_format(dataframe.Start_Time, 'H')*60 + sql_func.date_format(dataframe.Start_Time, 'm'))
     return dataframe

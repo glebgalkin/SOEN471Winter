@@ -12,6 +12,7 @@ from pyspark.sql.types import Row
 class ModelAnalyzer:
     def __init__(self, dataframe, label_to_predict, seed, categorical_features, continuous_features):
         dataframe = dataframe.select(label_to_predict, *categorical_features, *continuous_features).dropna()
+        dataframe.describe().show()
         label_features_df = self.prepare_df_for_prediction(dataframe, label_to_predict, categorical_features, continuous_features)
         (training, test) = label_features_df.randomSplit([0.8, 0.2], seed)
         self.__training_set = training
@@ -57,9 +58,5 @@ class ModelAnalyzer:
 
     def __produce_regression_metrics(self, predictions: DataFrame):
         evaluator = RegressionEvaluator(metricName="rmse", labelCol='label', predictionCol="prediction")
-
         rmse = evaluator.evaluate(predictions, {evaluator.metricName: "rmse"})
-        r2 = evaluator.evaluate(predictions, {evaluator.metricName: "r2"})
-
-        RegressionMetrics = namedtuple('RegressionMetrics', 'rmse, rse')
-        return RegressionMetrics(rmse, r2)
+        return rmse

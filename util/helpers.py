@@ -8,6 +8,7 @@ from pyspark.sql import SparkSession
 import matplotlib.pyplot as plt
 import numpy as np
 from pyspark.sql.functions import col
+import pyspark.sql.functions as sql_func
 from pyspark.sql.types import StructType, StructField, StringType, TimestampType, IntegerType, FloatType, BooleanType
 
 from prediction_magic.dataset_trims import original_columns, daylight_colums, road_poi
@@ -77,7 +78,12 @@ def read_dataset(filename):
                          StructField('Astronomical_Twilight', StringType(), True)])
     total_accidents_data = spark.read.schema(schema).csv(filename, header=True, mode="DROPMALFORMED", encoding="ISO-8859-1", inferSchema=True)
     # dropped meaningless and 1 class only columns
-    return total_accidents_data.drop('Country').drop('Turning_Loop').drop('id', 'Source', 'TMC', 'Description')
+    final_result = total_accidents_data.drop('Country').drop('Turning_Loop').drop('id', 'Source', 'TMC', 'Description')\
+        .withColumn('start_year', sql_func.date_format(total_accidents_data.Start_Time, 'y'))
+    final_result = final_result.filter(((col('start_year') == 2019) | (col('start_year') == 2020)))
+    final_result.show()
+    print(final_result.count())
+    return final_result
 
 
 def display_piechart_of_column(accidents_dataframe: DataFrame, column_name: str):
