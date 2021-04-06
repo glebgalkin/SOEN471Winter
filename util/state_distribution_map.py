@@ -8,6 +8,8 @@ def build_states_graph(df):
     state_counts = [row['count'] for row in data]
     print(type(states))
     print(states)
+    root_accidents_data = None
+    balanced_dataset = root_accidents_data.rdd.flatMap(lambda row: [row]*10).toDF()
 
     fig = go.Figure(
         data=go.Choropleth(
@@ -16,7 +18,7 @@ def build_states_graph(df):
             locationmode = 'USA-states',
             colorscale = 'SunsetDark',
             colorbar_title = "Count"),
-        layout=go.Layout(
+        layout=go.Layout(toDF
             title_text='US Accidents by State (Feb 2016—Dec 2020)',
             title_x=0.5,
             font=dict(family='Verdana', size=12, color='#000000'),
