@@ -9,15 +9,5 @@ from util.piecharts import display_piechart_of_column
 
 seed = 777
 
-# total_accidents_data = read_dataset('data/US_Accidents_Dec20.csv')
+total_accidents_data = read_dataset('data/US_Accidents_Dec20.csv')
 
-from pyspark.sql import SparkSession
-
-spark = SparkSession \
-    .builder \
-    .appName("Python Spark SQL basic example") \
-    .config("spark.some.config.option", "some-value") \
-    .getOrCreate()
-filename = "Data/US_Accidents_Dec20.csv"
-lines = spark.sparkContext.textFile(filename)
-lines.show()

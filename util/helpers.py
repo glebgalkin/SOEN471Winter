@@ -73,8 +73,8 @@ def read_dataset(filename):
                          StructField('Astronomical_Twilight', StringType(), True)])
     total_accidents_data = spark.read.schema(schema).csv(filename, header=True, mode="DROPMALFORMED", encoding="ISO-8859-1", inferSchema=True)
     # dropped meaningless and 1 class only columns
-    final_result = total_accidents_data.drop('Country').drop('Turning_Loop').drop('id', 'Source', 'Description')\
-        .withColumn('start_year', sql_func.date_format(total_accidents_data.Start_Time, 'y'))
+    #final_result = total_accidents_data.drop('Country').drop('Turning_Loop').drop('id', 'Source', 'Description')\
+        #.withColumn('start_year', sql_func.date_format(total_accidents_data.Start_Time, 'y'))
     final_result = final_result.filter(((col('start_year') == 2019)))
     final_result.show()
     print(final_result.count())

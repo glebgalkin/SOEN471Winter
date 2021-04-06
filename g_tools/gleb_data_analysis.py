@@ -48,8 +48,6 @@ def count_missing_values_in_column(df: DataFrame, column_name: str):
 
 # Find the avg of all numeric columns
 from pyspark.sql.functions import avg
-
-
 def mean_of_pyspark_columns(df, numeric_cols, verbose=False):
     col_with_mean = []
     for col in numeric_cols:
@@ -64,8 +62,6 @@ def mean_of_pyspark_columns(df, numeric_cols, verbose=False):
 
 # Fill missing values for mean
 from pyspark.sql.functions import when, lit
-
-
 def fill_missing_with_mean(df, numeric_cols):
     col_with_mean = mean_of_pyspark_columns(df, numeric_cols)
 
@@ -74,3 +70,7 @@ def fill_missing_with_mean(df, numeric_cols):
                                      lit(mean)).otherwise(df[col]))
 
     return df
+
+
+def calculate_feature_and_missing_percentage(df: DataFrame, k: list ):
+    return 0
