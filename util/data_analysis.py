@@ -1,7 +1,7 @@
 from util.helpers import display_piechart_of_column
 
 
-#todo in our cleanup for wind direction we will merge north and N etc. South and S
+# todo in our cleanup for wind direction we will merge north and N etc. South and S
 def display_ratios(total_accidents_data):
     display_piechart_of_column(total_accidents_data, 'Civil_Twilight')
     display_piechart_of_column(total_accidents_data, 'Nautical_Twilight')
