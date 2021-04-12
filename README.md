@@ -71,3 +71,10 @@ At this moment of time we believe that the most relevant data to determine locat
 Since the dataset is quite big, we will use Apache Spark to work with the dataset, to clean it up, filter, modify and compute data. We will utilize the in memory computation that Spark provides for faster processing compared to MapReduce model. We will test our assumptions and models on a smaller amount of data at first, for example 5% or 10% of the original dataset that totals at 1.5 GB. We will try to use the cluster computers provided by Concordia University to deliver our final models and results, which will be delivered on the original dataset.
 
 
+Data analysis and feature engineering.
+1) we converted start_time end_time into start month_day and hour_minutes. 
+E.g. 2020-12-31 12:19:16 becomes -> m: 12, d: 31, hour_minutes: 739 (12*60 + 19)
+# on a side note we will probably benefit if we truncate the minutes a little, 
+# maybe it would be easier to extract features if minutes are only rounded up or down to 0 or 30 minutes. 
+# e.g 12:19:16 becomes 12:30, 12:46:55 becomes 13:00
+
