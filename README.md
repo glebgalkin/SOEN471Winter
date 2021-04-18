@@ -111,7 +111,11 @@ Since we are trying to predict classes 1, 2, 3, 4, we are required to use multi 
 We can see from the results that Logistic Regression constantly had worse performance than Decision Tree, that may have to do with a lot of categorical data that we have in our dataset. Also The F measure is actually higher for all the tests. This usually means that the model is very good at predicting a specific class but not so good at predicting the other.
 
 ## Discussion
-Predicting 4 classes with an extreme imbalance turned out to be a very challenging task. It would help a lot if the sources that provide the data could define a clear criteria of when a traffic goes to severity levels 2 or 3 or 4. Also there are other external factors at play, human factor in general has a huge impact on the traffic severity, it would really help to know for example how many lanes got blocked because of the accident or a percentage of still available road, maybe that percentage could take into account any already existing construction present etc. maybe for each street the dataset could contain a typical business of a road or some measure bby how quick authorities react to cleanup the accident and thus clean up traffic
+Predicting 4 classes with an extreme imbalance turned out to be a very challenging task. It would help a lot if the sources that provide the data could define a clear criteria of when a traffic goes to severity levels 2 or 3 or 4. 
+
+Also there are other external factors at play, human factor in general has a huge impact on the traffic severity, it would really help to know for example how many lanes got blocked because of the accident or a percentage of still available road, maybe that percentage could take into account any already existing construction present etc. Maybe for each street the dataset could contain a typical business of a road or some measure by how quick authorities react to cleanup the accident and thus clean up traffic
+
+
 Still, surely a giant like Google with Google Maps and many satellites deployed could gather and predict traffic severity for their route prediction, so the investigation and further research in this subject can yield amazing results
 
 
