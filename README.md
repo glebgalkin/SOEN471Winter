@@ -4,8 +4,15 @@ By
 Gleb Galkin    ID#40026736
 Dmytro Semenov ID#40038839
 
-jupyter notebook accessible at the root of the project: [./US Accidents technical analysis and regression.ipynb](https://github.com/glebgalkin/SOEN471Winter/blob/main/US%20Accidents%20technical%20analysis%20and%20regression.ipynb)
-or view in nbviewer if ipynb does not work for you https://nbviewer.jupyter.org/github/glebgalkin/SOEN471Winter/blob/main/US%20Accidents%20technical%20analysis%20and%20regression.ipynb
+**Full Report with data analysis and exploration can be found here:**
+
+**jupyter notebook accessible at the root of the project:**
+
+[./US Accidents technical analysis and regression.ipynb](https://github.com/glebgalkin/SOEN471Winter/blob/main/US%20Accidents%20technical%20analysis%20and%20regression.ipynb)
+
+**or view in nbviewer if ipynb does not work for you**
+
+https://nbviewer.jupyter.org/github/glebgalkin/SOEN471Winter/blob/main/US%20Accidents%20technical%20analysis%20and%20regression.ipynb
 
 
 
